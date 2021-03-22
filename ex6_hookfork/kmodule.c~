@@ -10,7 +10,7 @@
 
 MODULE_LICENSE("GPL");
 
-/*typedef asmlinkage long (*sys_call_ptr_t) (const struct pt_regs*);*/
+typedef asmlinkage long (*sys_call_ptr_t) (const struct pt_regs*);
 typedef asmlinkage int (*clone_syscalltype) (int (*fn) (void *), void *stack, int flags, pid_t *parent_tid, void *tls, pid_t *child_tid);
 clone_syscalltype old_fork; /*the old fork entry*/
 static sys_call_ptr_t* syscall_table; 
