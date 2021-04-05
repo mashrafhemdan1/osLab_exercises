@@ -1,0 +1,91 @@
+/root/ex8_proc_file/kmodule.c: In function ‘counter_procwrite’:
+/root/ex8_proc_file/kmodule.c:58:20: warning: passing argument 1 of ‘copy_from_user’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  if(copy_from_user(ubuf, buffer, count)) {
+                    ^~~~
+In file included from /usr/src/linux-headers-4.19.0-13-common/include/linux/highmem.h:9,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/pagemap.h:11,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/buffer_head.h:14,
+                 from /root/ex8_proc_file/kmodule.c:5:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/uaccess.h:144:22: note: expected ‘void *’ but argument is of type ‘const char *’
+ copy_from_user(void *to, const void __user *from, unsigned long n)
+                ~~~~~~^~
+/root/ex8_proc_file/kmodule.c: At top level:
+/root/ex8_proc_file/kmodule.c:74:11: error: initialization of ‘ssize_t (*)(struct file *, const char *, size_t,  loff_t *)’ {aka ‘long int (*)(struct file *, const char *, long unsigned int,  long long int *)’} from incompatible pointer type ‘int (*)(struct file *, const char *, size_t,  loff_t *)’ {aka ‘int (*)(struct file *, const char *, long unsigned int,  long long int *)’} [-Werror=incompatible-pointer-types]
+  .write = counter_procwrite,
+           ^~~~~~~~~~~~~~~~~
+/root/ex8_proc_file/kmodule.c:74:11: note: (near initialization for ‘proc_fops.write’)
+/root/ex8_proc_file/kmodule.c: In function ‘read_from_file_until’:
+/root/ex8_proc_file/kmodule.c:106:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  int i = 0;
+  ^~~
+/root/ex8_proc_file/kmodule.c: In function ‘string_concatenate’:
+/root/ex8_proc_file/kmodule.c:129:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  char* result;
+  ^~~~
+/root/ex8_proc_file/kmodule.c: In function ‘myModule_init’:
+/root/ex8_proc_file/kmodule.c:150:13: warning: comparison between pointer and integer
+  if(address == NULL){
+             ^~
+In file included from /usr/src/linux-headers-4.19.0-13-common/include/linux/printk.h:7,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/kernel.h:14,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/list.h:9,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/module.h:9,
+                 from /root/ex8_proc_file/kmodule.c:2:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kern_levels.h:5:18: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ #define KERN_SOH "\001"  /* ASCII Start Of Header */
+                  ^~~~~~
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kern_levels.h:9:20: note: in expansion of macro ‘KERN_SOH’
+ #define KERN_ALERT KERN_SOH "1" /* action must be taken immediately */
+                    ^~~~~~~~
+/root/ex8_proc_file/kmodule.c:156:9: note: in expansion of macro ‘KERN_ALERT’
+  printk(KERN_ALERT "System Call Table Address:%px\n", address);
+         ^~~~~~~~~~
+/root/ex8_proc_file/kmodule.c:156:48: note: format string is defined here
+  printk(KERN_ALERT "System Call Table Address:%px\n", address);
+                                               ~^
+                                               %ld
+/root/ex8_proc_file/kmodule.c:160:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  unsigned long syscalladdr;
+  ^~~~~~~~
+/root/ex8_proc_file/kmodule.c:162:16: warning: passing argument 1 of ‘sscanf’ makes pointer from integer without a cast [-Wint-conversion]
+         sscanf(address, "%lx", &syscalladdr);
+                ^~~~~~~
+In file included from /usr/src/linux-headers-4.19.0-13-common/include/linux/list.h:9,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/module.h:9,
+                 from /root/ex8_proc_file/kmodule.c:2:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kernel.h:517:12: note: expected ‘const char *’ but argument is of type ‘long unsigned int’
+ int sscanf(const char *, const char *, ...);
+            ^~~~~~~~~~~~
+/root/ex8_proc_file/kmodule.c:165:34: warning: initialization of ‘long unsigned int’ from ‘sys_call_ptr_t’ {aka ‘long int (*)(const struct pt_regs *)’} makes integer from pointer without a cast [-Wint-conversion]
+  const unsigned long fork_addr = syscall_table[__NR_clone];
+                                  ^~~~~~~~~~~~~
+/root/ex8_proc_file/kmodule.c:165:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  const unsigned long fork_addr = syscall_table[__NR_clone];
+  ^~~~~
+In file included from /usr/src/linux-headers-4.19.0-13-common/include/linux/printk.h:7,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/kernel.h:14,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/list.h:9,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/module.h:9,
+                 from /root/ex8_proc_file/kmodule.c:2:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kern_levels.h:5:18: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ #define KERN_SOH "\001"  /* ASCII Start Of Header */
+                  ^~~~~~
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kern_levels.h:9:20: note: in expansion of macro ‘KERN_SOH’
+ #define KERN_ALERT KERN_SOH "1" /* action must be taken immediately */
+                    ^~~~~~~~
+/root/ex8_proc_file/kmodule.c:166:9: note: in expansion of macro ‘KERN_ALERT’
+  printk(KERN_ALERT "Fork Address: %px\n", fork_addr);
+         ^~~~~~~~~~
+/root/ex8_proc_file/kmodule.c:166:36: note: format string is defined here
+  printk(KERN_ALERT "Fork Address: %px\n", fork_addr);
+                                   ~^
+                                   %ld
+/root/ex8_proc_file/kmodule.c:180:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  unsigned int lvl;
+  ^~~~~~~~
+cc1: some warnings being treated as errors
+make[3]: *** [/usr/src/linux-headers-4.19.0-13-common/scripts/Makefile.build:315: /root/ex8_proc_file/kmodule.o] Error 1
+make[2]: *** [/usr/src/linux-headers-4.19.0-13-common/Makefile:1565: _module_/root/ex8_proc_file] Error 2
+make[1]: *** [Makefile:146: sub-make] Error 2
+make: *** [Makefile:8: all] Error 2
+make: *** [Makefile:6: all] Error 2
